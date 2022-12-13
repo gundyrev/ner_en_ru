@@ -1,8 +1,8 @@
-import stanza
+from stanza import Pipeline
 
 
 def get_entities(text: str):
-    nlp = stanza.Pipeline(lang='ru', processors='tokenize,ner')
+    nlp = Pipeline(lang='ru', processors='tokenize,ner')
     processed = nlp(text)
     entities = [[ent.text, ent.type] for ent in processed.ents]
     return entities
