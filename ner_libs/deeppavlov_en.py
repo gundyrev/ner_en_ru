@@ -6,5 +6,6 @@ def get_entities(text: str):
     processed = ner_model([text])
     entities = []
     for i in range(len(processed[0][0])):
-        entities.append([processed[0][0][i], processed[1][0][i]])
+        if processed[1][0][i] != 'O':
+            entities.append([processed[0][0][i], processed[1][0][i]])
     return entities
