@@ -5,7 +5,7 @@ def get_entities(text: str):
     ner_model = build_model('ner_collection3_bert', download=True)
     processed = ner_model([text])
     entities = []
-    for i in range(len(processed[0][0])):
+    for i, item in enumerate(processed[0][0]):
         if processed[1][0][i] != 'O':
-            entities.append([processed[0][0][i], processed[1][0][i]])
+            entities.append([item, processed[1][0][i]])
     return entities
